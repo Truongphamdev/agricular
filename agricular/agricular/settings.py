@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'agricular',
+    'api',
     'rest_framework',
      'corsheaders',
      'rest_framework.authtoken',
@@ -48,7 +48,6 @@ INSTALLED_APPS = [
 
 ]
 CORS_ALLOW_ALL_ORIGINS = True
-
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
@@ -86,6 +85,12 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',  # Nếu muốn yêu cầu auth mặc định
     ],
+    'DEFAULT_PARSER_CLASSES': [
+    'rest_framework.parsers.JSONParser',
+    'rest_framework.parsers.MultiPartParser',
+    'rest_framework.parsers.FormParser',
+]
+
 }
 
 SIMPLE_JWT = {
@@ -108,7 +113,10 @@ DATABASES = {
         'PORT': config('DATABASE_PORT', default='5432'),
     }
 }
-
+# đăng nhập bằng email
+AUTHENTICATION_BACKENDS = [
+    'api.backends.EmailBackend',
+]
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
@@ -134,7 +142,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Ho_Chi_Minh'
 
 USE_I18N = True
 
@@ -145,6 +153,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+
+
+MEDIA_URL = '/media/' 
+MEDIA_ROOT = BASE_DIR / 'media' 
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
