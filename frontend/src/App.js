@@ -1,24 +1,43 @@
 import logo from './logo.svg';
 import './App.css';
+import { Register } from './component/auth/Register';
+import {BrowserRouter, Route, Routes} from "react-router-dom"
+import { Login } from './component/auth/Login';
+import { Main } from './component/Main';
+import { ProtectRouter } from './component/protect/ProtectRouter';
+import { Profile } from './component/profile/Profile';
+import { EditProfile } from './component/profile/UpdateProfile';
+import UpdatePassword from './component/profile/UpdatePassword';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+    <Routes>
+        <Route path='/register' element={<Register/>} />
+        <Route path='/login' element={<Login/>} />
+        <Route path='' element={
+          <ProtectRouter>
+          <Main/>
+          </ProtectRouter>
+          } />
+          <Route path='/profile' element={
+            <ProtectRouter>
+              <Profile/>
+            </ProtectRouter>
+          } />
+          <Route path='/update' element={
+            <ProtectRouter>
+              <EditProfile/>
+            </ProtectRouter>
+          } />
+            <Route path='/changepassword' element={
+            <ProtectRouter>
+              <UpdatePassword/>
+            </ProtectRouter>
+          } />
+    </Routes>
+    </BrowserRouter>
+
   );
 }
 
