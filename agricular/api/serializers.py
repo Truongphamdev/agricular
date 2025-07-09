@@ -1,7 +1,9 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from .models import Avatar
+from .models import Avatar,PlantDisease
 import os
+import logging
+logger = logging.getLogger(__name__)
 class UserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True,min_length=6)
     email = serializers.EmailField()
@@ -114,3 +116,29 @@ class PassWordUpdateSerializer(serializers.Serializer):
         except Exception as e:
             raise serializers.ValidationError(f"Lỗi khi lưu mật khẩu: {str(e)}")
 
+class AnalysisSerializer(serializers.ModelSerializer):
+    hash = serializers.CharField(required=False, allow_blank=True) 
+    image = serializers.URLField(required=False, allow_blank=True)
+    class Meta:
+        model = PlantDisease
+        fields = '__all__'
+        read_only_fields = ['id', 'user']
+    def get_image(self,obj):
+        request = self.context.get('request')
+        if obj.image:
+            return request.build_absolute_uri(obj.image.url)
+        return None
+    def validate(self, data):
+        logger.info(f"Validating data: {data}")
+        return data
+    def create(self, validated_data):
+        request = self.context.get('request')
+        if request and hasattr(request,'user'):
+            validated_data['user'] = request.user
+
+        return super().create(validated_data)
+
+class PlanDiseaseSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PlantDisease
+        fields = '__all__'

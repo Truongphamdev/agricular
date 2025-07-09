@@ -130,6 +130,13 @@ if (user.email) formdata.append('email', user.email);
           Lưu thay đổi
         </button>
       <button className='mt-2 ' onClick={()=>navigate('/changepassword')}><h3 className='text-red-500 hover:text-red-800 transition'>Đổi mật khẩu</h3></button>
+              <button
+          onClick={()=>navigate('/profile')}
+          className="px-4 py-2 mt-5 w-full bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition"
+        >
+          Quay lại
+        </button>
+      
       </div>
     </div>
   );
