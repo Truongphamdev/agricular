@@ -1,0 +1,37 @@
+{
+    "den_than": {
+        "disease": "Đen thân - cháy cổ rễ",
+        "cach_xu_ly": "Phun thuốc nấm, điều chỉnh tưới tiêu. Loại bỏ cây bệnh.",
+        "nguyen_nhan": "Nấm Fusarium spp. hoặc Rhizoctonia solani",
+        "phong_ngua": "Không gieo trồng nơi trũng thấp. Dùng giá thể sạch khi ươm cây.",
+        "thuoc": "Dùng Metalaxyl hoặc Validamycin"
+    },
+    "vang_la": {
+        "disease": "Vàng lá",
+        "cach_xu_ly": "Bổ sung phân bón chứa đạm và kali.",
+        "nguyen_nhan": "Thiếu hụt dinh dưỡng hoặc sâu bệnh.",
+        "phong_ngua": "Kiểm tra đất định kỳ, bón phân cân đối.",
+        "thuoc": "Phân bón lá NPK"
+    },
+    "cachua": {
+        "disease": "Cà chua",
+        "cach_xu_ly": "Không xác định",
+        "nguyen_nhan": "Không xác định",
+        "phong_ngua": "Không xác định",
+        "thuoc": "Không xác định"
+    },
+    "thoi_qua_do_nam": {
+        "disease": "Thối quả do nấm",
+        "cach_xu_ly": "Không xác định",
+        "nguyen_nhan": "Không xác định",
+        "phong_ngua": "Không xác định",
+        "thuoc": "Không xác định"
+    },
+    "phan_trang": {
+        "disease": "Phấn trắng",
+        "cach_xu_ly": "Sử dụng thuốc trừ nấm, phun định kỳ.",
+        "nguyen_nhan": "Do nấm Phytophthora gây ra.",
+        "phong_ngua": "Tránh tưới quá nhiều nước, giữ lá khô.",
+        "thuoc": "Ridomil Gold, Aliette"
+    }
+}

@@ -8,6 +8,7 @@ import { ProtectRouter } from './component/protect/ProtectRouter';
 import { Profile } from './component/profile/Profile';
 import { EditProfile } from './component/profile/UpdateProfile';
 import UpdatePassword from './component/profile/UpdatePassword';
+import { Detail } from './component/detail/Detail';
 
 function App() {
   return (
@@ -33,6 +34,11 @@ function App() {
             <Route path='/changepassword' element={
             <ProtectRouter>
               <UpdatePassword/>
+            </ProtectRouter>
+          } />
+            <Route path='profile/:pk/detail' element={
+            <ProtectRouter>
+              <Detail/>
             </ProtectRouter>
           } />
     </Routes>

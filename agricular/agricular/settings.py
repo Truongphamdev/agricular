@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 from datetime import timedelta
 from decouple import config
+import cloudinary
 
 import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -45,8 +46,23 @@ INSTALLED_APPS = [
      'corsheaders',
      'rest_framework.authtoken',
      'rest_framework_simplejwt.token_blacklist', 
+         'cloudinary',
+    'cloudinary_storage'
 
 ]
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': config('CLOUD_NAME'),
+    'API_KEY': config('API_KEY'),
+    'API_SECRET': config('API_SECRET'),
+}
+# Khởi tạo Cloudinary
+cloudinary.config(
+    cloud_name=config('CLOUD_NAME'),
+    api_key=config('API_KEY'),
+    api_secret=config('API_SECRET'),
+    secure=True
+)
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 CORS_ALLOW_ALL_ORIGINS = True
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -75,6 +91,10 @@ TEMPLATES = [
         },
     },
 ]
+
+# clarifai
+URL = config('url')
+PAT = config('pat')
 
 WSGI_APPLICATION = 'agricular.wsgi.application'
 
