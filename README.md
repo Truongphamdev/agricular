@@ -17,7 +17,8 @@
 - **Frontend**: ReactJS + TailwindCSS  
 - **Backend**: Django REST Framework   
 - **Cơ sở dữ liệu**: PostgreSQL  
-- **AI**: Clarifai API  
+- **AI**: Clarifai API
+- **Lưu trữ ảnh**: Cloudinary  
 
 
 ---
