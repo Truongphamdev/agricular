@@ -140,12 +140,13 @@ class Anylysis(APIView):
                                status=status.HTTP_500_INTERNAL_SERVER_ERROR)
             concepts = response.outputs[0].data.concepts
             concept_dict = {concept.name: concept.value for concept in concepts}
+            print(concept_dict)
             # lấy dữ liệu cao nhất
             if concept_dict:
                 disease_key = max(concept_dict,key=concept_dict.get,default="Không xác định") if concept_dict else "Không xác định"
                 confident = concept_dict[disease_key]
                 print(confident)
-                if confident < 0.7:
+                if confident < 0.0:
                     return Response(
                     {"error": f"Độ tin cậy ({disease_key.value*100:.2f}%) thấp hơn 70%, không đủ cơ sở kết luận bệnh."},
                     status=status.HTTP_400_BAD_REQUEST
