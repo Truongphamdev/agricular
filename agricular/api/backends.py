@@ -5,7 +5,7 @@ User = get_user_model()
 
 class EmailBackend(ModelBackend):
     """
-    Custom backend cho phép đăng nhập bằng email thay vì username.
+    Custom backend cho phép đăng nhậpgggg bằng email thay vì username.
     """
     def authenticate(self, request, username=None, password=None, **kwargs):
         email = kwargs.get('email', username)
