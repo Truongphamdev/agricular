@@ -29,3 +29,9 @@ jobs:
       run: |
         cd agricular
         pytest
+  deploy:
+    needs: test-and-run
+    runs-on: ubuntu-latest
+    steps:
+    - name: Deploy to production
+      run: echo "Deploying to production..."
