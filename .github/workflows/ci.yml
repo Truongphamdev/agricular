@@ -25,11 +25,6 @@ jobs:
         cd agricular
         pip install -r requirements.txt
 
-    - name: Run migrations
-      run: |
-        cd agricular
-        python manage.py migrate
-
     - name: Run test
       run: |
         cd agricular
